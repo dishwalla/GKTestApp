@@ -16,6 +16,7 @@ import javax.swing.table.TableRowSorter;
 
 public class MyActionTest {
 
+    public static final int COLUMN = 0;
     Mockery context = new Mockery() { {
         setImposteriser(ClassImposteriser.INSTANCE);
     } };
@@ -27,13 +28,13 @@ public class MyActionTest {
 
         //expectation
         context.checking(new Expectations() {{
-            oneOf (sorter).toggleSortOrder(0);
+            oneOf (sorter).toggleSortOrder(COLUMN);
             oneOf (table).getRowSorter(); will(returnValue(sorter));
         }});
 
         // execute
-        MyAction ma = new MyAction(table);
-        ma.doAction();
+        MyAction myAction = new MyAction(table);
+        myAction.doAction();
 
         // verify
         context.assertIsSatisfied();

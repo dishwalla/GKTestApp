@@ -24,6 +24,8 @@ import java.util.ResourceBundle;
 
 public class App extends JFrame {
 
+    public static final int WIDTH = 400;
+    public static final int HEIGHT = 200;
     JFrame frame = new JFrame("Application");
 
     Injector injector = Guice.createInjector(new AppModule());
@@ -42,8 +44,8 @@ public class App extends JFrame {
     public static void main( String[] args ){
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                App a = new App();
-                a.createAndShowGUI();
+                App application = new App();
+                application.createAndShowGUI();
             }
         });
     }
@@ -53,7 +55,7 @@ public class App extends JFrame {
     }
 
     private void createAndShowGUI() {
-        frame.setPreferredSize(new Dimension(400, 200));
+        frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         //Set up the content pane.
@@ -65,17 +67,17 @@ public class App extends JFrame {
 
     public void addComponentsToPane(Container pane) {
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
-        Data d;
-        Layout l;
+        Data data;
+        Layout layout;
         try {
             InputStream isd = new FileInputStream(conf.getParam("dataFile"));
             InputStream isl = new FileInputStream(conf.getParam("layoutFile"));
             //InputStream isd = getClass().getClassLoader().getResourceAsStream(conf.getParam("dataFile"));
             //InputStream isl = getClass().getClassLoader().getResourceAsStream(conf.getParam("layoutFile"));
-            d = dataInfoReader.read(isd);
-            l = layoutInfoReader.read(isl);
-            addTable(pane, d, l);
-            addButtons(pane, l);
+            data = dataInfoReader.read(isd);
+            layout = layoutInfoReader.read(isl);
+            addTable(pane, data, layout);
+            addButtons(pane, layout);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(frame, e.toString());
         }
@@ -102,14 +104,14 @@ public class App extends JFrame {
 
     private void addButtons(Container pane, Layout l) {
         for (final Layout.Menu.Button btn : l.getMenu().getButton()){
-            String s = btn.getClazz();
-            final BusinessFunction myAction = injector.getInstance(Key.get(BusinessFunction.class, Names.named(s)));
-            ActionListener al = new ActionListener() {
+            String btnClazz = btn.getClazz();
+            final BusinessFunction myAction = injector.getInstance(Key.get(BusinessFunction.class, Names.named(btnClazz)));
+            ActionListener actionListener = new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     myAction.doAction();
                 }
             };
-            placeButton(getCurrentBundle().getString(s), pane, al);
+            placeButton(getCurrentBundle().getString(btnClazz), pane, actionListener);
         }
     }
 
@@ -124,7 +126,6 @@ public class App extends JFrame {
         TableModel myModel = new DefaultTableModel(o, s);
         JTable table = tbl;
         table.setModel(myModel);
-        table.setPreferredSize(new Dimension(300, 100));
         table.setAlignmentX(Component.CENTER_ALIGNMENT);
         table.setOpaque(true);
         table.setAutoCreateColumnsFromModel(true);

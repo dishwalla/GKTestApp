@@ -14,14 +14,18 @@ import static org.junit.Assert.assertEquals;
  * Created by dish on 01.12.16.
  */
 public class DataInfoReaderTest {
+
+    public static final int INDEX = 0;
+    public static final int SIZE = 1;
+
     @Test
     public void testRead() throws Exception {
         DataInfoReader dir = new DataInfoReader();
-        Data d = dir.read(getClass().getClassLoader().getResourceAsStream("data.xml"));
-        assertEquals(d.getCar().size(), 1);
-        assertEquals(d.getCar().get(0).getMake(), "Toyota");
-        assertEquals(d.getCar().get(0).getModel(), "RAV4");
-        assertEquals(d.getCar().get(0).getYear(), 2007);
+        Data data = dir.read(getClass().getClassLoader().getResourceAsStream("data.xml"));
+        assertEquals(data.getCar().size(), SIZE);
+        assertEquals(data.getCar().get(INDEX).getMake(), "Toyota");
+        assertEquals(data.getCar().get(INDEX).getModel(), "RAV4");
+        assertEquals(data.getCar().get(INDEX).getYear(), 2007);
     }
 
 }

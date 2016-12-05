@@ -10,6 +10,7 @@ import javax.swing.*;
 
 public class MyAction implements BusinessFunction {
 
+    public static final int COLUMN = 0;
     private JTable table;
 
     @Inject
@@ -18,7 +19,7 @@ public class MyAction implements BusinessFunction {
     }
 
     public void doAction() {
-        table.getRowSorter().toggleSortOrder(0);
+        table.getRowSorter().toggleSortOrder(COLUMN);
     }
 
 }
