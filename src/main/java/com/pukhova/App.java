@@ -105,7 +105,8 @@ public class App extends JFrame {
     private void addButtons(Container pane, Layout l) {
         for (final Layout.Menu.Button btn : l.getMenu().getButton()){
             String btnClazz = btn.getClazz();
-            final BusinessFunction myAction = injector.getInstance(Key.get(BusinessFunction.class, Names.named(btnClazz)));
+            Key<BusinessFunction> key = Key.get(BusinessFunction.class, Names.named(btnClazz));
+            final BusinessFunction myAction = injector.getInstance(key);
             ActionListener actionListener = new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     myAction.doAction();

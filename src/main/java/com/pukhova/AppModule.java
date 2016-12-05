@@ -2,6 +2,7 @@ package com.pukhova;
 
 import com.epam.bl.BusinessFunction;
 import com.epam.bl.MyAction;
+import com.epam.bl.WSAction;
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
 import com.pukhova.model.Configuration;
@@ -21,6 +22,7 @@ public class AppModule extends AbstractModule {
         bind(InfoReader.class).annotatedWith(Names.named("Data")).to(DataInfoReader.class);
         bind(InfoReader.class).annotatedWith(Names.named("Layout")).to(LayoutInfoReader.class);
         bind(BusinessFunction.class).annotatedWith(Names.named("com.epam.bl.MyAction")).to(MyAction.class);
+        bind(BusinessFunction.class).annotatedWith(Names.named("com.epam.bl.WSAction")).to(WSAction.class);
         bind(JTable.class).toInstance(new JTable());
         bind(Configuration.class).toInstance(new Configuration());
 
