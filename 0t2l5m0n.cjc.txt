@@ -1,0 +1,37 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   .idea/encodings.xml
+#	new file:   .idea/libraries/Maven__aopalliance_aopalliance_1_0.xml
+#	new file:   .idea/libraries/Maven__cglib_cglib_3_2_0.xml
+#	new file:   .idea/libraries/Maven__com_google_guava_guava_19_0.xml
+#	new file:   .idea/libraries/Maven__com_google_inject_guice_4_1_0.xml
+#	new file:   .idea/libraries/Maven__javax_inject_javax_inject_1.xml
+#	new file:   .idea/libraries/Maven__junit_junit_4_12.xml
+#	new file:   .idea/libraries/Maven__org_apache_ant_ant_1_9_4.xml
+#	new file:   .idea/libraries/Maven__org_apache_ant_ant_launcher_1_9_4.xml
+#	new file:   .idea/libraries/Maven__org_beanshell_bsh_1_3_0.xml
+#	new file:   .idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml
+#	new file:   .idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml
+#	new file:   .idea/libraries/Maven__org_jmock_jmock_2_8_2.xml
+#	new file:   .idea/libraries/Maven__org_jmock_jmock_legacy_2_8_2.xml
+#	new file:   .idea/libraries/Maven__org_jmock_jmock_testjar_2_8_2.xml
+#	new file:   .idea/libraries/Maven__org_objenesis_objenesis_2_1.xml
+#	new file:   .idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml
+#	new file:   .idea/modules.xml
+#	new file:   .idea/vcs.xml
+#	new file:   cars-app.iml
+#
+# Untracked files:
+#	.idea/.name
+#	.idea/compiler.xml
+#	.idea/copyright/
+#	.idea/misc.xml
+#	.idea/workspace.xml
+#	target/
+#
+
